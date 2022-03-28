@@ -46,7 +46,7 @@ frames = [
      Frame(b"./assets/naranja.png"), Frame(b"./assets/naranja.png")],
     [Frame(b"./assets/pera.png"), Frame(b"./assets/pera.png"),
      Frame(b"./assets/fresa.png"), Frame(b"./assets/fresa.png")],
-    [Frame(b"./assets/platanos.png"), Frame(b"./assets/platanos.png"),
+    [Frame(b"./assets/platano.png"), Frame(b"./assets/platano.png"),
      Frame(b"./assets/sandia.png"), Frame(b"./assets/sandia.png")],
  ]
 
