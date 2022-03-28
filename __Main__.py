@@ -50,7 +50,17 @@ frames = [
      Frame(b"./assets/sandia.png"), Frame(b"./assets/sandia.png")],
  ]
 
+# screen = InitWindow (WIDTH, HEIGHT, b"Working with Images")
+# Colors
+white = (255, 255, 255)
+black = (0, 0, 0)
+gray = (206, 206, 206)
+blue = (30, 136, 229)
 
+# We calculate the size of the screen based on the size of the squares
+screen_width = len(frames[0]) * constants.measure_frame
+screen_height = (len(frames) * constants.measure_frame) + constants.button_height
+button_width = screen_width
 
 # hide all frames class
 def hide_all_frames():
@@ -101,17 +111,6 @@ def draw_frames():
             x += constants.measure_frame
         y += constants.measure_frame
 
-# screen = InitWindow (WIDTH, HEIGHT, b"Working with Images")
-# Colors
-white = (255, 255, 255)
-black = (0, 0, 0)
-gray = (206, 206, 206)
-blue = (30, 136, 229)
-
-# We calculate the size of the screen based on the size of the squares
-screen_width = len(frames[0]) * constants.measure_frame
-screen_height = (len(frames) * constants.measure_frame) + constants.button_height
-button_width = screen_width
 
 # game class
 def check_if_you_win():
@@ -134,7 +133,6 @@ def start_game():
     # Randomize 3 times
     for i in range(3):
         randomize_frames()
-    
     hide_all_frames()
     game_started = True
             
@@ -158,13 +156,6 @@ def main():
     # And the following for the second card
     x2 = None
     y2 = None
-
-   
-    #start_game()
-
-      
-    #hide_all_frames()
-    #draw_frames()
 
     
     value = 1
