@@ -40,13 +40,13 @@ class Frame:
         # self.imagen = raylib.LoadImage("assets/coco.png")
 
 frames = [
-    [Frame(b"./assets/coco.png"), Frame(b"./assets/coco.png"),
+    [Frame(b"./assets/arandano.png"), Frame(b"./assets/arandano.png"),
      Frame(b"./assets/manzana.png"), Frame(b"./assets/manzana.png")],
     [Frame(b"./assets/limon.png"), Frame(b"./assets/limon.png"),
      Frame(b"./assets/naranja.png"), Frame(b"./assets/naranja.png")],
     [Frame(b"./assets/pera.png"), Frame(b"./assets/pera.png"),
-     Frame(b"./assets/pina.png"), Frame(b"./assets/pina.png")],
-    [Frame(b"./assets/platano.png"), Frame(b"./assets/platano.png"),
+     Frame(b"./assets/fresa.png"), Frame(b"./assets/fresa.png")],
+    [Frame(b"./assets/platanos.png"), Frame(b"./assets/platanos.png"),
      Frame(b"./assets/sandia.png"), Frame(b"./assets/sandia.png")],
  ]
 
@@ -134,8 +134,11 @@ def start_game():
     # Randomize 3 times
     for i in range(3):
         randomize_frames()
+    
     hide_all_frames()
     game_started = True
+            
+   
 
 def main():
     #The button´s font
@@ -156,9 +159,7 @@ def main():
     x2 = None
     y2 = None
 
-    """
-    Funciones útiles
-    """
+   
     #start_game()
 
       
@@ -178,7 +179,7 @@ def main():
             
         xPosMouse = GetMouseX()
         yPosMouse = GetMouseX()
-        #print ("LLEGASTE")
+    
         # if is_mouse_button_pressed(False) and can_play:
         
         prove = is_mouse_button_pressed (False)
