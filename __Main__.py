@@ -160,7 +160,7 @@ def main():
     
     value = 1
    
-    InitWindow (WIDTH, HEIGHT, b"Working with Images")
+    InitWindow (WIDTH, HEIGHT, b"Memory Game")
     SetTargetFPS(60)
         
     while not WindowShouldClose():
@@ -172,7 +172,6 @@ def main():
         yPosMouse = GetMouseX()
     
         # if is_mouse_button_pressed(False) and can_play:
-        
         prove = is_mouse_button_pressed (False)
         if  (prove == 0 and can_play):
             xPosMouse = GetMouseX()
