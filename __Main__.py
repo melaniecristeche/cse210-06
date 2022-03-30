@@ -1,4 +1,3 @@
-
 from pyray import is_mouse_button_down, is_mouse_button_pressed
 
 import constants
@@ -22,7 +21,6 @@ RED = (255, 0, 0)
 #DrawRectangle (HEIGHT - constants.button_height,int(HEIGHT/2), 30,30,BLUE)
 #button = rect (0, screen_height - constants.button_height,
 # button_width, screen_height)
-
 
 class Frame:
     def __init__(self, image_source):
@@ -136,8 +134,6 @@ def start_game():
     hide_all_frames()
     game_started = True
             
-   
-
 def main():
     #The button´s font
     font_size = 20
@@ -156,7 +152,6 @@ def main():
     # And the following for the second card
     x2 = None
     y2 = None
-
     
     value = 1
    
