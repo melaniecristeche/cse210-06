@@ -13,6 +13,8 @@ from raylib import *
 WIDTH = 700
 HEIGHT = 700
 
+
+
 # The button, which at the end is a rectangle
 #DrawRectangle (HEIGHT - constants.button_height,int(HEIGHT/2), 30,30,BLUE)
 #button = rect (0, screen_height - constants.button_height,
@@ -110,9 +112,11 @@ def win():
                 return False
     return True
 
+
 def restart_game():
     global game_started
     game_started = False
+
 
 def start_game():
     global game_started
@@ -205,11 +209,15 @@ while not WindowShouldClose():
                 
                 DrawTexture(scarfy1, x, y, RAYWHITE)
                     #game_screen.blit(Frame.imagen_real, (x, y))
+                 
+
             else:
                 name_image = constants.unhidden_image_name
                 scarfy1 = LoadTexture(name_image)
-                DrawTexture(scarfy1, x, y, RAYWHITE)      
+                DrawTexture(scarfy1, x, y, RAYWHITE)
+                
             x += constants.measure_frame
         y += constants.measure_frame
     EndDrawing()    
 CloseWindow()
+

@@ -1,5 +1,6 @@
 
 from pyray import is_mouse_button_pressed
+import pyray
 import raylib
 
 import constants
@@ -12,6 +13,20 @@ from raylib import *
 
 WIDTH = 700
 HEIGHT = 700
+
+LIGHTGRAY = (200, 200, 200, 255)
+RAYWHITE = (245, 245, 245, 255)  # raylib logo white
+BLUE = (0, 0, 255)
+YELLOW = (255, 255, 0) 
+RED = (255, 0, 0)
+
+last_seconds = None
+can_play = True 
+game_started = False
+x1 = None
+y1 = None
+x2 = None
+y2 = None
 
 # The button, which at the end is a rectangle
 #DrawRectangle (HEIGHT - constants.button_height,int(HEIGHT/2), 30,30,BLUE)
@@ -27,11 +42,11 @@ class Frame:
     def __init__(self, image_source):
 
         self.showed = True
-        self.unhidden = False
+        self.hidden = False
                
         self.image_source = image_source
         #self.imagen_real = LoadTexture(image_source)
-        self.real_image = LoadImage (image_source)
+        self.image = LoadImage (image_source)
         # self.imagen = raylib.LoadImage("assets/coco.png")
 
 frames = [
@@ -48,41 +63,24 @@ frames = [
 # raylib.DrawRectangle(400, boxposY, 80, 80, (0,0,255))
 # boton = pyray.Rectangle
 # screen = InitWindow (WIDTH, HEIGHT, b"Working with Images")
-
 # Colors
-LIGHTGRAY = (200, 200, 200, 255)
-RAYWHITE = (245, 245, 245, 255)  # raylib logo white
-BLUE = (0, 0, 255)
-YELLOW = (255, 255, 0) 
-RED = (255, 0, 0)
+white = (255, 255, 255)
+black = (0, 0, 0)
+gray = (206, 206, 206)
+blue = (30, 136, 229)
 
 # We calculate the size of the screen based on the size of the squares
 screen_width = len(frames[0]) * constants.measure_frame
 screen_height = (len(frames) * constants.measure_frame) + constants.button_height
 button_width = screen_width
 
-#Font size on the Rectange shape
-font_size = 20
-
-#Flags
-last_seconds = None     # To know if we can hide our card during N seconds
-can_play = True         # To know if we can react to user events 
-game_started = False    # Our game is Started or not, to know if we'll hide or show cards. 
-
-# First Card            # When we are looking for a pair card, we'll need indexs to the List.
-x1 = None               
-y1 = None
-
-# Second Card
-x2 = None
-y2 = None
-
-# hide all frames class
-def hide_all_frames():
-    for row in frames:
-        for frame in row:
-            frame.showed = False
-            frame.unhidden = False
+def start_game():
+    global game_started
+    # Randomize 3 times
+    for i in range(3):
+        randomize_frames()
+    hide_all_frames()
+    game_started = True
 
 # randomize_frames class
 def randomize_frames():
@@ -97,16 +95,21 @@ def randomize_frames():
             frames[y][x] = frames[y_random][x_random]
             frames[y_random][x_random] = temporal_frame
 
+# hide all frames class
+def hide_all_frames():
+    for row in frames:
+        for frame in row:
+            frame.showed = False
+            frame.hidden = False
 # game class
 def check_if_you_win():
     if win():
         restart_game()
 
-#Return FALSE if at least one frame is not unhidden. TRUE is all frames are unhidden. 
 def win():
     for row in frames:
         for frame in row:
-            if not frame.unhidden:
+            if not frame.hidden:
                 return False
     return True
 
@@ -114,46 +117,40 @@ def restart_game():
     global game_started
     game_started = False
 
-def start_game():
-    global game_started
-    # Randomize 3 times
-    for i in range(3):
-        randomize_frames()
-    hide_all_frames()
-    game_started = True
-
 InitWindow (WIDTH, HEIGHT, b"Memory Game")
-SetTargetFPS(60)
-
-
+SetTargetFPS(60)     
 xPosMouse = 0
 yPosMouse = 0
-sigue = 1
+continue_start_game = 0
+
+
 
 while not WindowShouldClose():
     BeginDrawing()
-    raylib.DrawText(b"Press letter B to star game", 80, 700,20, RED)
+    raylib.DrawRectangle(10, 650, 80,80, RED)
     ClearBackground(RAYWHITE)
-    
+
     #start_game()
-    #if IsKeyDown(KEY_B) and can_play:
-    if can_play:
+
+    if is_mouse_button_pressed(raylib.MOUSE_BUTTON_RIGHT) and can_play:
         # print ("helo")
+        if is_mouse_button_pressed(raylib.MOUSE_BUTTON_LEFT):
+            xPosMouse = GetMouseX()
+            yPosMouse = GetMouseY()
 
-        if not game_started:
-            start_game()
+            if not game_started:
+                start_game()
+            
+        else:
+            if not game_started:
+                continue
 
-        xPosMouse = GetMouseX()
-        yPosMouse = GetMouseY()
-
-        if is_mouse_button_pressed(raylib.MOUSE_BUTTON_LEFT) :
-            print ("helo")
             x = int(math.floor(xPosMouse / constants.measure_frame))
             y = int(math.floor(yPosMouse / constants.measure_frame))
 
             frame = frames[y][x]
             
-            if frame.showed or frame.unhidden:
+            if frame.showed or frame.hidden:
                 continue
 
             if x1 is None and y1 is None:
@@ -168,8 +165,8 @@ while not WindowShouldClose():
                 frame2 = frames[y2][x2]
 
                 if frame1.image_source == frame2.image_source:
-                    frames[y1][x1].unhidden = True
-                    frames[y2][x2].unhidden = True
+                    frames[y1][x1].hidden = True
+                    frames[y2][x2].hidden = True
                     x1 = None
                     x2 = None
                     y1 = None
@@ -177,7 +174,7 @@ while not WindowShouldClose():
                 else:
                     last_seconds = int(time.time())
                     can_play = False
-            check_if_you_win()    
+            check_if_you_win()
         
     now = int(time.time())
 
@@ -189,9 +186,9 @@ while not WindowShouldClose():
         x2 = None
         y2 = None
         last_seconds = None
-        # At this point the user can click again as the images will already be unhidden
+        # At this point the user can click again as the images will already be hidden
         can_play = True
-    #ClearBackground(RAYWHITE)
+    ClearBackground(RAYWHITE)
     x = 0
     y = 0
      # loop through the frames
@@ -199,17 +196,20 @@ while not WindowShouldClose():
         x = 0
         for frame in row:
 
-            if frame.unhidden or frame.showed:
+            if frame.hidden or frame.showed:
                 name_image = frame.image_source
                 scarfy1 = LoadTexture(name_image)
                 
                 DrawTexture(scarfy1, x, y, RAYWHITE)
                     #game_screen.blit(Frame.imagen_real, (x, y))
+
             else:
-                name_image = constants.unhidden_image_name
+                name_image = constants.hidden_image_name
                 scarfy1 = LoadTexture(name_image)
-                DrawTexture(scarfy1, x, y, RAYWHITE)      
+                DrawTexture(scarfy1, x, y, RAYWHITE)
             x += constants.measure_frame
         y += constants.measure_frame
+
     EndDrawing()    
 CloseWindow()
+

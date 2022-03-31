@@ -18,9 +18,10 @@ BLACK= Color(0,0,0)
 button_height = 50  # The button below, to start game
 measure_frame = 150  # Image size in pixels
 # The back of each card
-hidden_image_name = "assets/oculta.png"
+unhidden_image_name = b"./assets/oculta.png"
 #hidden_image = pygame.image.load(hidden_image_name)
-seconds_display_frame = 2  # Seconds to hide the part if it is not correct
+seconds_showed_frame = 2  # Seconds to hide the part if it is not correct
+
 """
 A class that represents the frame. He himself has an image and can be
 discovered (when it has already been discovered before and it is not the card currently being searched for)
