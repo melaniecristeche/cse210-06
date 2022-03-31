@@ -10,13 +10,6 @@ import random
 
 from raylib import * 
 
-WIDTH = 700
-HEIGHT = 700
-
-# The button, which at the end is a rectangle
-#DrawRectangle (HEIGHT - constants.button_height,int(HEIGHT/2), 30,30,BLUE)
-#button = rect (0, screen_height - constants.button_height,
-# button_width, screen_height)
 """
     This class is responsible for collecting the source of each image 
     (that is, the name of the file)
@@ -44,17 +37,6 @@ frames = [
     [Frame(b"./assets/platano.png"), Frame(b"./assets/platano.png"),
      Frame(b"./assets/sandia.png"), Frame(b"./assets/sandia.png")],]
 
-# raylib.draw
-# raylib.DrawRectangle(400, boxposY, 80, 80, (0,0,255))
-# boton = pyray.Rectangle
-# screen = InitWindow (WIDTH, HEIGHT, b"Working with Images")
-
-# Colors
-LIGHTGRAY = (200, 200, 200, 255)
-RAYWHITE = (245, 245, 245, 255)  # raylib logo white
-BLUE = (0, 0, 255)
-YELLOW = (255, 255, 0) 
-RED = (255, 0, 0)
 
 # We calculate the size of the screen based on the size of the squares
 screen_width = len(frames[0]) * constants.measure_frame
@@ -122,7 +104,7 @@ def start_game():
     hide_all_frames()
     game_started = True
 
-InitWindow (WIDTH, HEIGHT, b"Memory Game")
+InitWindow (constants.WIDTH, constants.HEIGHT, b"Memory Game")
 SetTargetFPS(60)
 
 
@@ -132,14 +114,11 @@ sigue = 1
 
 while not WindowShouldClose():
     BeginDrawing()
-    raylib.DrawText(b"Press letter B to star game", 80, 700,20, RED)
-    ClearBackground(RAYWHITE)
+    #raylib.DrawText(b"Press letter B to star game", 80, 700,20, constants.RED)
+    ClearBackground(constants.RAYWHITE)
     
-    #start_game()
     #if IsKeyDown(KEY_B) and can_play:
     if can_play:
-        # print ("helo")
-
         if not game_started:
             start_game()
 
@@ -147,7 +126,6 @@ while not WindowShouldClose():
         yPosMouse = GetMouseY()
 
         if is_mouse_button_pressed(raylib.MOUSE_BUTTON_LEFT) :
-            print ("helo")
             x = int(math.floor(xPosMouse / constants.measure_frame))
             y = int(math.floor(yPosMouse / constants.measure_frame))
 
@@ -191,9 +169,11 @@ while not WindowShouldClose():
         last_seconds = None
         # At this point the user can click again as the images will already be unhidden
         can_play = True
+
     #ClearBackground(RAYWHITE)
     x = 0
     y = 0
+
      # loop through the frames
     for row in frames:
         x = 0
@@ -202,13 +182,11 @@ while not WindowShouldClose():
             if frame.unhidden or frame.showed:
                 name_image = frame.image_source
                 scarfy1 = LoadTexture(name_image)
-                
-                DrawTexture(scarfy1, x, y, RAYWHITE)
-                    #game_screen.blit(Frame.imagen_real, (x, y))
+                DrawTexture(scarfy1, x, y, constants.RAYWHITE)
             else:
                 name_image = constants.unhidden_image_name
                 scarfy1 = LoadTexture(name_image)
-                DrawTexture(scarfy1, x, y, RAYWHITE)      
+                DrawTexture(scarfy1, x, y, constants.RAYWHITE)      
             x += constants.measure_frame
         y += constants.measure_frame
     EndDrawing()    

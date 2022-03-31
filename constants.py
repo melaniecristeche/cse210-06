@@ -3,16 +3,22 @@ from game.color import Color
 """
 Variables and configurations that we are going to use throughout the program
 """
-WIDTH = 700
-HEIGHT = 700
 
+# Colors
 LIGHTGRAY = (200, 200, 200, 255)
 RAYWHITE = (245, 245, 245, 255)  # raylib logo white
 BLUE = (0, 0, 255)
 YELLOW = (255, 255, 0) 
 RED = (255, 0, 0)
-GREEN = Color(0, 255, 0)
-BLACK= Color(0,0,0)
+GREEN = (0, 255, 0)
+BLACK= (0,0,0)
+
+
+WIDTH = 700
+HEIGHT = 700
+
+
+
 
 
 button_height = 50  # The button below, to start game
