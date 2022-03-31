@@ -14,15 +14,15 @@ GREEN = (0, 255, 0)
 BLACK= (0,0,0)
 
 
-WIDTH = 700
-HEIGHT = 700
+WIDTH = 800
+HEIGHT = 800
 
 
 
 
 
 button_height = 50  # The button below, to start game
-measure_frame = 150  # Image size in pixels
+measure_frame = 200  # Image size in pixels
 # The back of each card
 unhidden_image_name = b"./assets/oculta.png"
 #hidden_image = pygame.image.load(hidden_image_name)
