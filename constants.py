@@ -1,4 +1,3 @@
-from game.color import Color
 
 """
 Variables and configurations that we are going to use throughout the program

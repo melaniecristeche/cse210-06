@@ -2,6 +2,10 @@
 from pyray import is_mouse_button_pressed
 import raylib
 
+from game.frame import Frame 
+from game.game import Game
+from game.measure import Measure
+
 import constants
 import sys
 import math
@@ -43,8 +47,6 @@ screen_width = len(frames[0]) * constants.measure_frame
 screen_height = (len(frames) * constants.measure_frame) + constants.button_height
 button_width = screen_width
 
-#Font size on the Rectange shape
-font_size = 20
 
 #Flags
 last_seconds = None     # To know if we can hide our card during N seconds

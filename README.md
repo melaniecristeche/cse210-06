@@ -32,33 +32,21 @@ The project files and folders are organized as follows:
 
 ```
 root                        (project root folder)
-+-- cse-210-06              
-  +-- Game        
-    +--- memory_game	    (project main folder)		    
-        +--- casting        (ALL THE ACTORS IN OUR GAME AND OPERATIONS)
-	  +-- actor.py        (Parent class to create objects)
-	  +-- cast.py         (All types of operations applied to our actors) 
-	  +-- card.py         (This will be the main actor of the game) 
-	  +-- timer.py        (lets control the time during the game) 
-    	+--- directing      (THE MAIN CLASS TO DIRECT THE GAME)
-  	  +---- director.py   (This class will direct all the actors)
-   	+--- scripting      (TRACKING ACTIONS )
-	  +-- action.py     		(overridden by derived classes)
-	  +-- control_actors_action.py  ()
-	  +-- draw_cards_action.py      (Draws all the actors)
-	  +-- reveal_cards_action.py    (Makes visible all cards when the game stars)
-	  +-- remove cards_action.py    (Makes invisible when players pair two cards)
-	  +-- add_cards_action.py       (**The paired card are put above the screen)
-	  +-- script.py                 (Keep track of a collection of actions)
-  	+--- services        (ALL SERVICES TO PLAY WITH THE GAME )
-	  +---- video_services.py       (Lets to draw graphic on the screem)
- 	+--- shared          (CONTROL POSITION AND COLOR IN THE GAME)
-	  +---- color.py        (Control color of every character on the sreem)
-	  +---- point.py        (Control position X's and Y's on the sreen)
++-- cse-210-06                     
+    +--- game	    (project main folder)	
+
+      +-- frame.py (THE FRAME CLASS)
+      +-- game.py (THE GAME CLASS)
+      +-- measure.py (THE MEASURE CLASS)
+
       +-- __main__.py        (THE MAIN CLASS)
       +-- constants.py       (CONSTANTS TO BE USED IN THE GAME)
-      +-- soundtrack.mp3     (Background music)
-    +-- README.md            (General info)
+	  +-- README.md            (General info)
+
+    +--- assets (project material folder)
+	images (png)
+	README.md (Copyright info)
+
 ```
 
 # Required Technologies
