@@ -2,9 +2,10 @@
 from pyray import is_mouse_button_pressed
 import raylib
 
-# from game.frame import Frame 
-# from game.game import Game
-# from game.measure import Measure
+from game.frame import Frame 
+from game.game import Game
+from game.hide_all_frames import Hide_all_frames
+from game.randomize_frames import Randomize_frames
 
 import constants
 import sys
