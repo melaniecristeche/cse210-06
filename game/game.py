@@ -32,22 +32,4 @@
 #             hide_all_frames()
 #             game_started = True
 
-#         # hide all frames class
-#         def hide_all_frames(self):
-#             for row in frames:
-#                 for frame in row:
-#                     frame.showed = False
-#                     frame.unhidden = False
-
-#         # randomize_frames class
-#         def randomize_frames(self):
-#             # Choose X and Y randoms, swap
-#             number_of_rows = len(frames)
-#             number_of_columns = len(frames[0])
-#             for y in range(number_of_rows):
-#                 for x in range(number_of_columns):
-#                     x_random = random.randint(0, number_of_columns - 1)
-#                     y_random = random.randint(0, number_of_rows - 1)
-#                     temporal_frame = frames[y][x]
-#                     frames[y][x] = frames[y_random][x_random]
-#                     frames[y_random][x_random] = temporal_frame
+  

@@ -17,9 +17,6 @@ WIDTH = 800
 HEIGHT = 800
 
 
-
-
-
 button_height = 50  # The button below, to start game
 measure_frame = 200  # Image size in pixels
 # The back of each card
