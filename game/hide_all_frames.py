@@ -1,4 +1,4 @@
-from game.frame import Frame
+# from game.frame import Frame
 
 # class Hide_all_frames():
 
