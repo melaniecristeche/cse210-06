@@ -43,6 +43,7 @@ class Game(Randomize_frames, Hide_all_frames):
 
         self.game_started
         game_started = False
+        return game_started
 
 
     def start_game(self):
@@ -53,6 +54,8 @@ class Game(Randomize_frames, Hide_all_frames):
         for i in range(3):
             self.randomize_frames()
         self.hide_all_frames()
+
         game_started = True
+        
     
     

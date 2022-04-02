@@ -20,22 +20,7 @@ class Game_structure(Game):
 
     def __init__(self):
 
-        #Flags
-        self.game_started = False    # Our game is Started or not, to know if we'll hide or show cards. 
-        self.last_seconds = None     # To know if we can hide our card during N seconds
-        self.can_play = True         # To know if we can react to user events 
-
-        self.xPosMouse = 0
-        self.yPosMouse = 0
-        self.sigue = 1
-
-        # First Card            # When we are looking for a pair card, we'll need indexs to the List.
-        self.x1 = None               
-        self.y1 = None
-
-        # Second Card
-        self.x2 = None
-        self.y2 = None
+        self.game_started = False
 
         frame = Frame
         self.frames = frame.frames()
@@ -51,7 +36,7 @@ class Game_structure(Game):
         InitWindow (constants.WIDTH, constants.HEIGHT, b"Memory Game")
         SetTargetFPS(60)
 
-    
+
         while not WindowShouldClose():
 
                 BeginDrawing()
@@ -59,16 +44,33 @@ class Game_structure(Game):
                 ClearBackground(constants.RAYWHITE)
                 
                 #if IsKeyDown(KEY_B) and can_play:
-                if self.can_play:
-                    if not self.game_started:
+                #Flags
+                game_started = False    # Our game is Started or not, to know if we'll hide or show cards. 
+                last_seconds = None     # To know if we can hide our card during N seconds
+                can_play = True         # To know if we can react to user events 
+
+                xPosMouse = 0
+                yPosMouse = 0
+                
+                # First Card            # When we are looking for a pair card, we'll need indexs to the List.
+                x1 = None               
+                y1 = None
+
+                # Second Card
+                x2 = None
+                y2 = None
+                
+                if can_play:
+
+                    if not game_started:
                         self.start_game()
 
-                    self.xPosMouse = GetMouseX()
-                    self.yPosMouse = GetMouseY()
+                    xPosMouse = GetMouseX()
+                    yPosMouse = GetMouseY()
 
                     if is_mouse_button_pressed(raylib.MOUSE_BUTTON_LEFT) :
-                        x = int(math.floor(self.xPosMouse / constants.measure_frame))
-                        y = int(math.floor(self.yPosMouse / constants.measure_frame))
+                        x = int(math.floor(xPosMouse / constants.measure_frame))
+                        y = int(math.floor(yPosMouse / constants.measure_frame))
 
                         frame = self.frames[y][x]
 
@@ -78,7 +80,7 @@ class Game_structure(Game):
                         if frame.showed or frame.unhidden:
                             continue
 
-                        if self.x1 is None and self.y1 is None:
+                        if x1 is None and y1 is None:
                             x1 = x
                             y1 = y
                             self.frames[y1][x1].showed = True
@@ -97,13 +99,13 @@ class Game_structure(Game):
                                 y1 = None
                                 y2 = None
                             else:
-                                self.last_seconds = int(time.time())
-                                self.can_play = False
+                                last_seconds = int(time.time())
+                                can_play = False
                         self.check_if_you_win()    
                     
                 now = int(time.time())
 
-                if self.last_seconds is not None and now - self.last_seconds >= constants.seconds_showed_frame:
+                if last_seconds is not None and now - last_seconds >= constants.seconds_showed_frame:
                     self.frames[y1][x1].showed = False
                     self.frames[y2][x2].showed = False
 
@@ -112,7 +114,7 @@ class Game_structure(Game):
                 y = 0
 
                 # loop through the self.frames
-                for row in self.self.frames:
+                for row in self.frames:
                     x = 0
                     for frame in row:
 
