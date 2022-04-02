@@ -12,7 +12,9 @@ class Game(Randomize_frames, Hide_all_frames):
     def __init__(self):
 
         self.game_started = False    # Our game is Started or not, to know if we'll hide or show cards.
-
+        self.showed = True
+        self.unhidden = False
+        
         self.hide_all_frames()
         self.randomize_frames()
 

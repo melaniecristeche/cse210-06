@@ -25,6 +25,7 @@ class Frame:
 
 
     def frames():
+        
         _frames = [
                 [Frame(b"./assets/arandano.png"), Frame(b"./assets/arandano.png"),
                 Frame(b"./assets/manzana.png"), Frame(b"./assets/manzana.png")],
@@ -34,6 +35,7 @@ class Frame:
                 Frame(b"./assets/fresa.png"), Frame(b"./assets/fresa.png")],
                 [Frame(b"./assets/platano.png"), Frame(b"./assets/platano.png"),
                 Frame(b"./assets/sandia.png"), Frame(b"./assets/sandia.png")],]
+        
         return _frames
 
         

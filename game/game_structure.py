@@ -21,7 +21,8 @@ class Game_structure(Game):
     def __init__(self):
 
         self.game_started = False
-
+        self.showed = True
+        self.unhidden = False
      
         frame = Frame
         self.frames = frame.frames()
@@ -129,8 +130,8 @@ class Game_structure(Game):
                             DrawTexture(scarfy1, x, y, constants.RAYWHITE)      
                         x += constants.measure_frame
                     y += constants.measure_frame
+                
                 EndDrawing()   
-
         CloseWindow()
     
  
