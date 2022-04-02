@@ -18,9 +18,8 @@ class Game(Randomize_frames, Hide_all_frames):
 
         self.win()
         self.restart_game()
-
-        frame = Frame
-        self.frames = frame.frames()
+        
+        self.frames
 
 
     def win(self):

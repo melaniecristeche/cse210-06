@@ -22,9 +22,8 @@ class Game_structure(Game):
 
         self.game_started = False
 
-        frame = Frame
-        self.frames = frame.frames()
-
+     
+        self.frames
         self.start_game()
         self.check_if_you_win()
         self.hide_all_frames()
