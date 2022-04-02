@@ -36,15 +36,14 @@ class Game(Randomize_frames, Hide_all_frames):
     def check_if_you_win(self):
         
         if self.win():
-            self.start_game()
+            self.restart_game()
   
 
     def restart_game(self):
 
         self.game_started
         game_started = False
-        return game_started
-
+     
 
     def start_game(self):
 

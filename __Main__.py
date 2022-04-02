@@ -8,7 +8,7 @@ from raylib import *
 
 
 def main():
-
+    
     Game_structure().game_structure()
 
 
