@@ -42,17 +42,16 @@ class Game_structure(Game):
 
         self.start_game()
         self.check_if_you_win()
+        self.hide_all_frames()
+        self.randomize_frames()
 
-        rand = Randomize_frames()
-        hide = Hide_all_frames()
-        self.hide_all = hide.hide_all_frames()
-        self.randomize = rand.randomize_frames()
 
-    def director(self):
-
+    def game_structure(self):
+    
         InitWindow (constants.WIDTH, constants.HEIGHT, b"Memory Game")
         SetTargetFPS(60)
 
+    
         while not WindowShouldClose():
 
                 BeginDrawing()
@@ -130,3 +129,5 @@ class Game_structure(Game):
                 EndDrawing()   
 
         CloseWindow()
+    
+ 

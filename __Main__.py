@@ -8,9 +8,11 @@ from raylib import *
 
 
 def main():
+    game = Game_structure
+    game.game_structure()
 
-    Game_structure()
-    
+
+
 
 if __name__ == "__main__":
     main()
