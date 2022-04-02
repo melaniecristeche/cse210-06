@@ -23,6 +23,9 @@ class Game_structure(Game):
         self.game_started = False
         self.showed = True
         self.unhidden = False
+
+        self.xPosMouse = 0
+        self.yPosMouse = 0
      
         frame = Frame
         self.frames = frame.frames()
