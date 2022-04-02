@@ -9,6 +9,8 @@ import constants
 
 class Game(Randomize_frames, Hide_all_frames):
 
+    """The Game class is creating the parameters of the game. """
+
     def __init__(self):
 
         self.game_started = False    # Our game is Started or not, to know if we'll hide or show cards.

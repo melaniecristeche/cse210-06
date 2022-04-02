@@ -3,6 +3,9 @@ import random
 
 class Randomize_frames(Frame):
 
+    """The Randomize_frames is doing the random process for all the frames
+    in each start of the game"""
+
     def __init__(self):
         
         self.showed = True

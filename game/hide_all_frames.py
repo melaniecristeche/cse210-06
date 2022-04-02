@@ -2,6 +2,8 @@ from game.frame import Frame
 
 class Hide_all_frames(Frame):
 
+    """The Hide_all_frames is doing the hiding process for each frame"""
+
     def __init__(self):
 
         self.showed = True
