@@ -35,12 +35,14 @@ root                        (project root folder)
 +-- cse-210-06                     
     +--- game	    (project main folder)	
 
-      +-- frame.py (THE FRAME CLASS)
-      +-- game.py (THE GAME CLASS)
-      +-- measure.py (THE MEASURE CLASS)
+      +-- frame.py (THE Frame CLASS)
+      +-- game.py (THE Game CLASS)
+      +-- game_structure.py (THE Game_structure CLASS)
+      +-- hide_all_frames.py (THE hide_all_frames CLASS)
+      +-- randomize_frames.py (THE randomize_frames CLASS)
 
-      +-- __main__.py        (THE MAIN CLASS)
-      +-- constants.py       (CONSTANTS TO BE USED IN THE GAME)
+    +-- __Main__.py        (THE MAIN CLASS)
+    +-- constants.py       (CONSTANTS TO BE USED IN THE GAME)
 	  +-- README.md            (General info)
 
     +--- assets (project material folder)
