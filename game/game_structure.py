@@ -20,45 +20,38 @@ class Game_structure(Game):
 
     def __init__(self):
 
-        game_started = False    # Our game is Started or not, to know if we'll hide or show cards. 
+        #Flags
+        self.game_started = False    # Our game is Started or not, to know if we'll hide or show cards. 
+        self.last_seconds = None     # To know if we can hide our card during N seconds
+        self.can_play = True         # To know if we can react to user events 
+
+        self.xPosMouse = 0
+        self.yPosMouse = 0
+        self.sigue = 1
+
+        # First Card            # When we are looking for a pair card, we'll need indexs to the List.
+        self.x1 = None               
+        self.y1 = None
+
+        # Second Card
+        self.x2 = None
+        self.y2 = None
 
         frame = Frame
-        self.self.frames = frame.self.frames()
+        self.frames = frame.frames()
+
+        self.start_game()
+        self.check_if_you_win()
 
         rand = Randomize_frames()
         hide = Hide_all_frames()
-
-        self.hide_all_self.frames = hide.hide_all_frames()
-        self.randomize_self.frames = rand.randomize_frames()
-
-        start = Game
-        check = Game
-        self.start_game = start.start_game()
-        self.check_if_you_win = check.check_if_you_win()
-
+        self.hide_all = hide.hide_all_frames()
+        self.randomize = rand.randomize_frames()
 
     def director(self):
 
         InitWindow (constants.WIDTH, constants.HEIGHT, b"Memory Game")
         SetTargetFPS(60)
-
-
-        xPosMouse = 0
-        yPosMouse = 0
-        sigue = 1
-
-        #Flags
-        last_seconds = None     # To know if we can hide our card during N seconds
-        can_play = True         # To know if we can react to user events 
-        game_started = False    # Our game is Started or not, to know if we'll hide or show cards. 
-
-        # First Card            # When we are looking for a pair card, we'll need indexs to the List.
-        x1 = None               
-        y1 = None
-
-        # Second Card
-        x2 = None
-        y2 = None
 
         while not WindowShouldClose():
 
@@ -67,23 +60,26 @@ class Game_structure(Game):
                 ClearBackground(constants.RAYWHITE)
                 
                 #if IsKeyDown(KEY_B) and can_play:
-                if can_play:
-                    if not game_started:
+                if self.can_play:
+                    if not self.game_started:
                         self.start_game()
 
-                    xPosMouse = GetMouseX()
-                    yPosMouse = GetMouseY()
+                    self.xPosMouse = GetMouseX()
+                    self.yPosMouse = GetMouseY()
 
                     if is_mouse_button_pressed(raylib.MOUSE_BUTTON_LEFT) :
-                        x = int(math.floor(xPosMouse / constants.measure_frame))
-                        y = int(math.floor(yPosMouse / constants.measure_frame))
+                        x = int(math.floor(self.xPosMouse / constants.measure_frame))
+                        y = int(math.floor(self.yPosMouse / constants.measure_frame))
 
                         frame = self.frames[y][x]
-                        
+
+                        showed = True
+                        unhidden = False
+
                         if frame.showed or frame.unhidden:
                             continue
 
-                        if x1 is None and y1 is None:
+                        if self.x1 is None and self.y1 is None:
                             x1 = x
                             y1 = y
                             self.frames[y1][x1].showed = True
@@ -102,22 +98,15 @@ class Game_structure(Game):
                                 y1 = None
                                 y2 = None
                             else:
-                                last_seconds = int(time.time())
-                                can_play = False
+                                self.last_seconds = int(time.time())
+                                self.can_play = False
                         self.check_if_you_win()    
                     
                 now = int(time.time())
 
-                if last_seconds is not None and now - last_seconds >= constants.seconds_showed_frame:
+                if self.last_seconds is not None and now - self.last_seconds >= constants.seconds_showed_frame:
                     self.frames[y1][x1].showed = False
                     self.frames[y2][x2].showed = False
-                    x1 = None
-                    y1 = None
-                    x2 = None
-                    y2 = None
-                    last_seconds = None
-                    # At this point the user can click again as the images will already be unhidden
-                    can_play = True
 
                 #ClearBackground(RAYWHITE)
                 x = 0

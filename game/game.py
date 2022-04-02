@@ -11,46 +11,53 @@ class Game:
 
     def __init__(self):
 
-        self.game_started = False    # Our game is Started or not, to know if we'll hide or show cards. 
+        self.game_started = False    # Our game is Started or not, to know if we'll hide or show cards.
+
+        rand = Randomize_frames()
+        hide = Hide_all_frames()
+        self.hide_all = hide.hide_all_frames()
+        self.randomize = rand.randomize_frames()
+
+        self.win()
+        self.restart_game()
+
+        frame = Frame
+        self.frames = frame.frames()
 
 
-        def check_if_you_win():
+    def win(self):
 
-            if win():
-                restart_game()
+        """Return FALSE if at least one frame is not unhidden. TRUE is all frames are unhidden. """
 
-        #Return FALSE if at least one frame is not unhidden. TRUE is all frames are unhidden. 
-        def win():
-            fram = Frame
-            frames = fram.frames()
-
-            for row in frames:
-                for frame in row:
-                    if not frame.unhidden:
-                        return False
-            return True
-
-        def restart_game(self):
-
-            self.game_started
-            game_started = False
-
-            return game_started
-
-        def start_game():
-
-            self.game_started
-
-            rand = Randomize_frames()
-            hide = Hide_all_frames()
-
-            hide_all_frames = hide.hide_all_frames()
-            randomize_frames = rand.randomize_frames()
-
-            # Randomize 3 times
-            for i in range(3):
-                randomize_frames
-            hide_all_frames
-            game_started = True
-
+        for row in self.frames:
+            for frame in row:
+                if not frame.unhidden:
+                    return False
+        return True
+    
+    def check_if_you_win(self):
+        
+        if self.win():
+            self.start_game()
   
+
+    def restart_game(self):
+
+        self.game_started
+        game_started = False
+
+        return game_started
+
+    def start_game(self):
+
+        self.game_started
+
+        # Randomize 3 times
+        for i in range(3):
+            self.randomize
+        self.hide_all
+        game_started = True
+
+        return game_started
+    
+    

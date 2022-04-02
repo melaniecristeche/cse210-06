@@ -5,8 +5,7 @@ class Randomize_frames(Frame):
 
     def __init__(self):
 
-        frame = Frame()
-        self.frames = frame.frames()
+        self.frames()
 
     def randomize_frames(self):
 
