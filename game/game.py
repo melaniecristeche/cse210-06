@@ -45,6 +45,7 @@ class Game(Randomize_frames, Hide_all_frames):
         
         #global game_started
         # Randomize 3 times
+        
         for i in range(3):
             self.randomize_frames()
         self.hide_all_frames()

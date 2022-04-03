@@ -10,7 +10,7 @@ class Hide_all_frames(Frame):
         #self.unhidden = False
         
         frame = Frame()
-        self.frames = frame.frames()
+        self.frames = frame.get_frames()
         
     def hide_all_frames(self):
         for row in self.frames:
