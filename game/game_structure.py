@@ -16,13 +16,10 @@ import random
 from raylib import * 
 
 class Game_structure(Game):
-    """This Game_structure class is in charge of the functionality of the class Game
+    """This Game_structure class is in charge of the functionality 
+    of the class Game
     and implements all the other functions in one class"""
     
-    #game_started = False
-    # Our game is Started or not, to know if we'll hide or show cards. 
-    
-
     def __init__(self):
         
         self.showed = True      #ready
