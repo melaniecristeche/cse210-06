@@ -20,51 +20,43 @@ class Game_structure(Game):
     and implements all the other functions in one class"""
     
     #game_started = False
-
+    # Our game is Started or not, to know if we'll hide or show cards. 
     
-    def __init__(self):
-        constants.GAME_STARTED = False
-        #self.game_started = False
 
+    def __init__(self):
+        
         self.showed = True      #ready
         self.unhidden = False   #ready
 
-        self.xPosMouse = 0
-        self.yPosMouse = 0
-     
         frame = Frame
-        self.frames = frame.frames()
+        self.frames = frame.get_frames()
         
-        #if IsKeyDown(KEY_B) and can_play:
         #Flags
-            # Our game is Started or not, to know if we'll hide or show cards. 
+        constants.last_seconds = None        
+        self.can_play = True        
+        constants.GAME_STARTED = False
         
-        self.can_play = True         # To know if we can react to user events 
-
-        # First Card            # When we are looking for a pair card, we'll need indexs to the List.
+        # When we are looking for a pair card, we'll need indexs to the List.
+        # First Card            
         self.x1 = None               
         self.y1 = None
 
-            # Second Card
+        # Second Card
         self.x2 = None
         self.y2 = None
         
-    def game_structure(self):
-    
+        self.xPosMouse = 0
+        self.yPosMouse = 0
+
         InitWindow (constants.WIDTH, constants.HEIGHT, b"Memory Game")
         SetTargetFPS(60)
-
+    
+    def game_structure(self):
 
         while not WindowShouldClose():
-
             BeginDrawing()
             #raylib.DrawText(b"Press letter B to star game", 80, 700,20, constants.RED)
             ClearBackground(constants.RAYWHITE)
-            
-            # xPosMouse = 0
-            # yPosMouse = 0
-            
-            
             
             if self.can_play:
                 #if not self.game_started:    
@@ -80,8 +72,8 @@ class Game_structure(Game):
 
                     frame = self.frames[y][x]
 
-                    showed = True
-                    unhidden = False
+                    # showed = True
+                    # unhidden = False
 
                     if frame.showed or frame.unhidden:
                         continue
@@ -114,6 +106,12 @@ class Game_structure(Game):
             if constants.last_seconds is not None and now - constants.last_seconds >= constants.seconds_showed_frame:
                 self.frames[self.y1][self.x1].showed = False
                 self.frames[self.y2][self.x2].showed = False
+                self.x1 = None
+                self.x2 = None
+                self.y1 = None
+                self.y2 = None
+                constants.last_seconds = None
+                self.can_play = True
 
             #ClearBackground(RAYWHITE)
             x = 0
@@ -122,8 +120,8 @@ class Game_structure(Game):
             # loop through the self.frames
             for row in self.frames:
                 x = 0
-                for frame in row:
 
+                for frame in row:
                     if frame.unhidden or frame.showed:
                         name_image = frame.image_source
                         scarfy1 = LoadTexture(name_image)

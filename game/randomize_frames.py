@@ -12,7 +12,7 @@ class Randomize_frames(Frame):
         #self.unhidden = False
 
         frame = Frame()
-        self.frames = frame.frames()
+        self.frames = frame.get_frames()
         
 
     def randomize_frames(self):

@@ -24,8 +24,7 @@ class Frame:
         # self.imagen = raylib.LoadImage("assets/coco.png")
 
 
-    def frames():
-        
+    def get_frames():
         _frames = [
                 [Frame(b"./assets/arandano.png"), Frame(b"./assets/arandano.png"),
                 Frame(b"./assets/manzana.png"), Frame(b"./assets/manzana.png")],
