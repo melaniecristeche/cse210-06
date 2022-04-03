@@ -3,7 +3,6 @@ from game.frame import Frame
 from game.hide_all_frames import Hide_all_frames
 from game.randomize_frames import Randomize_frames
 
-
 import random 
 import constants
 
@@ -13,15 +12,15 @@ class Game(Randomize_frames, Hide_all_frames):
 
     def __init__(self):
 
-        self.game_started = False    # Our game is Started or not, to know if we'll hide or show cards.
-        self.showed = True
-        self.unhidden = False
+        #self.game_started = False    # Our game is Started or not, to know if we'll hide or show cards.
+        #self.showed = True
+        #self.unhidden = False
         
-        self.hide_all_frames()
-        self.randomize_frames()
+        #self.hide_all_frames()
+        #self.randomize_frames()
 
-        self.win()
-        self.restart_game()
+        #self.win()
+        #self.restart_game()
         
         frame = Frame
         self.frames = frame.frames()
@@ -38,27 +37,29 @@ class Game(Randomize_frames, Hide_all_frames):
         return True
     
     def check_if_you_win(self):
-        
         if self.win():
-            self.restart_game()
+           self.restart_game()
   
-
-    def restart_game(self):
-
-        self.game_started
-        game_started = False
-     
-
     def start_game(self):
-
-        self.game_started
-
+        #self.game_started
+        
+        #global game_started
         # Randomize 3 times
         for i in range(3):
             self.randomize_frames()
         self.hide_all_frames()
 
-        game_started = True
+        constants.GAME_STARTED = True
+        #game_started = True
         
+    def restart_game(self):
+        #global game_started
+        
+        constants.GAME_STARTED = False
+        
+        #game_started = False
+     
+
+   
     
     

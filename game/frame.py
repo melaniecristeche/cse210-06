@@ -15,8 +15,8 @@ class Frame:
     We need the source for later, to compare the cards
     """
 
-        self.showed = True
-        self.unhidden = False
+        #self.showed = True
+        #self.unhidden = False
                
         self.image_source = image_source
         #self.imagen_real = LoadTexture(image_source)

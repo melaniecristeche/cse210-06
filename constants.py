@@ -14,15 +14,17 @@ BLACK= (0,0,0)
 
 
 WIDTH = 800
-HEIGHT = 800
+HEIGHT = 750
 
 
-button_height = 50  # The button below, to start game
 measure_frame = 200  # Image size in pixels
 # The back of each card
 unhidden_image_name = b"./assets/oculta.png"
 #hidden_image = pygame.image.load(hidden_image_name)
 seconds_showed_frame = 2  # Seconds to hide the part if it is not correct
+
+GAME_STARTED = False
+last_seconds = None     # To know if we can hide our card during N seconds
 
 
 # COLUMNS = 40

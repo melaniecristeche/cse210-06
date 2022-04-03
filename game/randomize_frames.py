@@ -8,10 +8,10 @@ class Randomize_frames(Frame):
 
     def __init__(self):
         
-        self.showed = True
-        self.unhidden = False
+        #self.showed = True
+        #self.unhidden = False
 
-        frame = Frame
+        frame = Frame()
         self.frames = frame.frames()
         
 
