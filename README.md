@@ -57,6 +57,5 @@ root                        (project root folder)
 
 ```
 * Melanie Cristeche (cri21012@byui.edu)
-* Carter Raymond (ray21006@byui.edu)
 * Leonard Salazar (sal21034@byui.edu)
 ```
