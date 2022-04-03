@@ -14,7 +14,7 @@ BLACK= (0,0,0)
 
 
 WIDTH = 800
-HEIGHT = 750
+HEIGHT = 800
 
 
 measure_frame = 200  # Image size in pixels
